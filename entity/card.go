@@ -1,11 +1,12 @@
 package entity
 
-type Card struct {
-	Id int
+type Card interface {
+	SetId(id int)
 }
 
 type UnitCard struct {
 	Card
+	Id int
 	UnitType         string
 	Speed            int
 	AttackStrength   int
@@ -17,9 +18,18 @@ type UnitCard struct {
 	DefenceModifiers string
 }
 
+func (c UnitCard) SetId(id int) {
+	c.Id = id
+}
+
 type LeaderCard struct {
 	Card
+	Id int
 	CombatValue      int
 	PlaceUnitAbility int
-	SpecialEffect    int
+	SpecialEffect    string
+}
+
+func (c LeaderCard) SetId(id int) {
+	c.Id = id
 }

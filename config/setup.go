@@ -1,14 +1,18 @@
 package config
 
-import "milito-golang/entity"
+import (
+	"milito-golang/config/decks"
+	"milito-golang/entity"
+	"milito-golang/shared"
+)
 
 func InitialSetup() entity.GameState {
 
 	currentPlayer := entity.PlayerState{
-		Deck:        entity.Deck{},
+		Deck:        decks.NewAlexandrianMacedonian(),
 		DeadPile:    entity.Deck{},
 		DiscardPile: entity.Deck{},
-		Faction:     "",
+		Faction:     shared.AlexandrianMacedonian,
 		Hand:        entity.Hand{},
 		PlayerId:    0,
 		Row1:        [5]entity.UnitCard{},
@@ -17,12 +21,12 @@ func InitialSetup() entity.GameState {
 	}
 
 	anotherPlayer := entity.PlayerState{
-		Deck:        entity.Deck{},
+		Deck:        decks.NewAncientBritish(),
 		DeadPile:    entity.Deck{},
 		DiscardPile: entity.Deck{},
-		Faction:     "",
+		Faction:     shared.AncientBritish,
 		Hand:        entity.Hand{},
-		PlayerId:    0,
+		PlayerId:    1,
 		Row1:        [5]entity.UnitCard{},
 		Row2:        [5]entity.UnitCard{},
 		State:       "",

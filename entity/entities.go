@@ -1,5 +1,7 @@
 package entity
 
+import "milito-golang/shared"
+
 type GameState struct {
 	Neutral       [5]int
 	Phase         PhasesEnum
@@ -18,6 +20,7 @@ type SquadFormation struct {
 }
 
 type Deck struct {
+	Cards []Card
 }
 
 type Hand struct {
@@ -27,7 +30,7 @@ type PlayerState struct {
 	Deck        Deck
 	DeadPile    Deck
 	DiscardPile Deck
-	Faction     FactionsEnum
+	Faction     shared.FactionsEnum
 	Hand        Hand
 	PlayerId    int
 	Row1        [5]UnitCard
