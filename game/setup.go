@@ -6,6 +6,9 @@ import (
 	"milito-golang/shared"
 )
 
+const NCardsAtGameStart = 9
+
+
 func TakeCard(player entity.PlayerState) entity.PlayerState {
 	card := player.Deck.Pop()
 	player.Hand.Push(card)
@@ -19,7 +22,7 @@ func InitialSetup() entity.GameState {
 		DeadPile:    entity.Deck{},
 		DiscardPile: entity.Deck{},
 		Faction:     shared.AlexandrianMacedonian,
-		Hand:        entity.Hand{},
+		Hand:        entity.Hand{Deck: entity.Deck{Cards: []entity.Card{}}},
 		PlayerId:    0,
 		Row1:        [5]entity.UnitCard{},
 		Row2:        [5]entity.UnitCard{},
@@ -28,17 +31,17 @@ func InitialSetup() entity.GameState {
 
 	anotherPlayer := entity.PlayerState{
 		Deck:        decks.NewAncientBritish(),
-		DeadPile:    entity.Deck{},
-		DiscardPile: entity.Deck{},
+		DeadPile:    entity.Deck{Cards: []entity.Card{}},
+		DiscardPile: entity.Deck{Cards: []entity.Card{}},
 		Faction:     shared.AncientBritish,
-		Hand:        entity.Hand{},
+		Hand:        entity.Hand{Deck: entity.Deck{Cards: []entity.Card{}}},
 		PlayerId:    1,
 		Row1:        [5]entity.UnitCard{},
 		Row2:        [5]entity.UnitCard{},
 		State:       "",
 	}
 
-	for i := 0; i < 9; i++ {
+	for i := 0; i < NCardsAtGameStart; i++ {
 		currentPlayer = TakeCard(currentPlayer)
 		anotherPlayer = TakeCard(anotherPlayer)
 	}
