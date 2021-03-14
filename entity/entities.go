@@ -24,6 +24,7 @@ type Deck struct {
 }
 
 type Hand struct {
+	Deck
 }
 
 type PlayerState struct {

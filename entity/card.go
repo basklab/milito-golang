@@ -2,11 +2,11 @@ package entity
 
 type Card interface {
 	SetId(id int)
+	Id() int
 }
 
 type UnitCard struct {
-	Card
-	Id int
+	id int
 	UnitType         string
 	Speed            int
 	AttackStrength   int
@@ -19,17 +19,24 @@ type UnitCard struct {
 }
 
 func (c UnitCard) SetId(id int) {
-	c.Id = id
+	c.id = id
+}
+
+func (c UnitCard) Id() int {
+	return c.id
 }
 
 type LeaderCard struct {
-	Card
-	Id int
+	id int
 	CombatValue      int
 	PlaceUnitAbility int
 	SpecialEffect    string
 }
 
 func (c LeaderCard) SetId(id int) {
-	c.Id = id
+	c.id = id
+}
+
+func (c LeaderCard) Id() int {
+	return c.id
 }

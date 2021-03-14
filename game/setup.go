@@ -1,10 +1,16 @@
-package config
+package game
 
 import (
 	"milito-golang/config/decks"
 	"milito-golang/entity"
 	"milito-golang/shared"
 )
+
+func TakeCard(player entity.PlayerState) entity.PlayerState {
+	card := player.Deck.Pop()
+	player.Hand.Push(card)
+	return player
+}
 
 func InitialSetup() entity.GameState {
 
@@ -32,6 +38,11 @@ func InitialSetup() entity.GameState {
 		State:       "",
 	}
 
+	for i := 0; i < 9; i++ {
+		currentPlayer = TakeCard(currentPlayer)
+		anotherPlayer = TakeCard(anotherPlayer)
+	}
+
 	return entity.GameState{
 		Neutral:       [5]int{0, 0, 0, 0, 0},
 		Phase:         entity.PhasesEnum("OLOLO"),
@@ -39,4 +50,5 @@ func InitialSetup() entity.GameState {
 		AnotherPlayer: anotherPlayer,
 		BattleState:   entity.AttackState{},
 	}
+
 }

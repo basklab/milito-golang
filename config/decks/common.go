@@ -16,13 +16,15 @@ func multiply(nCards int, card entity.UnitCard) []entity.UnitCard {
 func initializeDeck(units []entity.UnitCard, leaders []entity.LeaderCard) entity.Deck {
 	cards := make([]entity.Card, len(units)+len(leaders))
 	for id, card := range leaders {
-		card.Id = id
 		cards[id] = card
 	}
 	for id, card := range units {
-		card.Id = len(leaders) + id
 		cards[len(leaders)+id] = card
 	}
+	for i, _ := range cards {
+		cards[i].SetId(i)
+	}
+
 	rand.Seed(1)
 	rand.Shuffle(len(cards), func(i, j int) {
 		cards[i], cards[j] = cards[j], cards[i]

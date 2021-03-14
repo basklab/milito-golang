@@ -2,14 +2,14 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"milito-golang/config"
 	"milito-golang/config/decks"
+	"milito-golang/game"
 	"milito-golang/store"
 	"net/http"
 )
 
 func main() {
-	db.SetInternal(config.InitialSetup())
+	db.SetInternal(game.InitialSetup())
 
 	r := gin.Default()
 	r.GET("/ping", processPing)
@@ -20,7 +20,7 @@ func main() {
 var db store.Db
 
 func setupGame(c *gin.Context) {
-	db.SetInternal(config.InitialSetup())
+	db.SetInternal(game.InitialSetup())
 	c.JSON(http.StatusOK, db.Internal())
 }
 
