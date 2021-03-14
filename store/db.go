@@ -1,19 +1,19 @@
 package store
 
-import "milito-golang/entities"
+import "milito-golang/entity"
 
 type Db struct {
-	internal entities.GameState
+	internal entity.GameState
 }
 
-func NewDb(internal entities.GameState) *Db {
+func NewDb(internal entity.GameState) *Db {
 	return &Db{internal: internal}
 }
 
-func (db *Db) Internal() entities.GameState {
+func (db *Db) Internal() entity.GameState {
 	return db.internal
 }
 
-func (db *Db) SetInternal(internal entities.GameState) {
+func (db *Db) SetInternal(internal entity.GameState) {
 	db.internal = internal
 }

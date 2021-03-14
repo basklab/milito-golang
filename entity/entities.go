@@ -1,4 +1,4 @@
-package entities
+package entity
 
 type GameState struct {
 	Neutral       [5]int

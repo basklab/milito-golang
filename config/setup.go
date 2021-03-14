@@ -1,38 +1,38 @@
 package config
 
-import "milito-golang/entities"
+import "milito-golang/entity"
 
-func InitialSetup() entities.GameState {
+func InitialSetup() entity.GameState {
 
-	currentPlayer := entities.PlayerState{
-		Deck:        entities.Deck{},
-		DeadPile:    entities.Deck{},
-		DiscardPile: entities.Deck{},
+	currentPlayer := entity.PlayerState{
+		Deck:        entity.Deck{},
+		DeadPile:    entity.Deck{},
+		DiscardPile: entity.Deck{},
 		Faction:     "",
-		Hand:        entities.Hand{},
+		Hand:        entity.Hand{},
 		PlayerId:    0,
-		Row1:        [5]entities.UnitCard{},
-		Row2:        [5]entities.UnitCard{},
+		Row1:        [5]entity.UnitCard{},
+		Row2:        [5]entity.UnitCard{},
 		State:       "",
 	}
 
-	anotherPlayer := entities.PlayerState{
-		Deck:        entities.Deck{},
-		DeadPile:    entities.Deck{},
-		DiscardPile: entities.Deck{},
+	anotherPlayer := entity.PlayerState{
+		Deck:        entity.Deck{},
+		DeadPile:    entity.Deck{},
+		DiscardPile: entity.Deck{},
 		Faction:     "",
-		Hand:        entities.Hand{},
+		Hand:        entity.Hand{},
 		PlayerId:    0,
-		Row1:        [5]entities.UnitCard{},
-		Row2:        [5]entities.UnitCard{},
+		Row1:        [5]entity.UnitCard{},
+		Row2:        [5]entity.UnitCard{},
 		State:       "",
 	}
 
-	return entities.GameState{
+	return entity.GameState{
 		Neutral:       [5]int{0, 0, 0, 0, 0},
-		Phase:         entities.PhasesEnum("OLOLO"),
+		Phase:         entity.PhasesEnum("OLOLO"),
 		CurrentPlayer: currentPlayer,
 		AnotherPlayer: anotherPlayer,
-		BattleState:   entities.AttackState{},
+		BattleState:   entity.AttackState{},
 	}
 }

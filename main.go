@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"milito-golang/config"
-	"milito-golang/entities"
+	"milito-golang/entity"
 	"milito-golang/store"
 	"net/http"
 )
@@ -26,7 +26,7 @@ func setupGame(c *gin.Context) {
 
 func processPing() func(c *gin.Context) {
 
-	argg := entities.UnitCard{UnitType: "okkfads"}
+	argg := entity.UnitCard{UnitType: "okkfads"}
 
 	return func(c *gin.Context) {
 		c.JSON(http.StatusOK, argg)
