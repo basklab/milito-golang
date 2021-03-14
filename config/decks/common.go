@@ -16,10 +16,10 @@ func multiply(nCards int, card entity.UnitCard) []entity.UnitCard {
 func initializeDeck(units []entity.UnitCard, leaders []entity.LeaderCard) entity.Deck {
 	cards := make([]entity.Card, len(units)+len(leaders))
 	for id, card := range leaders {
-		cards[id] = card
+		cards[id] = &card
 	}
 	for id, card := range units {
-		cards[len(leaders)+id] = card
+		cards[len(leaders)+id] = &card
 	}
 	for i, _ := range cards {
 		cards[i].SetId(i)

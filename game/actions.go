@@ -13,15 +13,15 @@ func PlaceAUnit(state entity.GameState, action shared.PlaceUnitEvent) entity.Gam
 	for _, discardId := range action.DiscardedCards {
 		discardCard := player.Hand.TakeCardById(discardId)
 		switch c := discardCard.(type) {
-		case entity.LeaderCard:
+		case *entity.LeaderCard:
 			deployValue += c.PlaceUnitAbility
-		case entity.UnitCard:
+		case *entity.UnitCard:
 			deployValue += 1
 		}
 		player.DiscardPile.Push(discardCard)
 	}
 	// play a new card
-	newCard := player.Hand.TakeCardById(action.SelectedCard).(entity.UnitCard)
+	newCard := player.Hand.TakeCardById(action.SelectedCard).(*entity.UnitCard)
 	deployPenalty := 0
 	if action.SelectedColumn == 0 || action.SelectedColumn == 4 {
 		deployPenalty += newCard.DeployPenalty + newCard.FlankPenalty
@@ -38,8 +38,8 @@ func PlaceAUnit(state entity.GameState, action shared.PlaceUnitEvent) entity.Gam
 	}
 	tmp := currentRow[action.SelectedColumn]
 	if tmp.UnitType != "" {
-		player.DiscardPile.Push(tmp)
+		player.DiscardPile.Push(&tmp)
 	}
-	currentRow[action.SelectedColumn] = newCard
+	currentRow[action.SelectedColumn] = *newCard
 	return state
 }

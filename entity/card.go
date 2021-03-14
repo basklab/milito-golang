@@ -1,7 +1,7 @@
 package entity
 
 type Card interface {
-	SetId(id int)
+	SetId(idx int)
 	Id() int
 }
 
@@ -18,11 +18,11 @@ type UnitCard struct {
 	DefenceModifiers string
 }
 
-func (c UnitCard) SetId(id int) {
-	c.id = id
+func (c *UnitCard) SetId(idx int) {
+	c.id = idx
 }
 
-func (c UnitCard) Id() int {
+func (c *UnitCard) Id() int {
 	return c.id
 }
 
@@ -33,10 +33,10 @@ type LeaderCard struct {
 	SpecialEffect    string
 }
 
-func (c LeaderCard) SetId(id int) {
-	c.id = id
+func (c *LeaderCard) SetId(idx int) {
+	c.id = idx
 }
 
-func (c LeaderCard) Id() int {
+func (c *LeaderCard) Id() int {
 	return c.id
 }
