@@ -1,0 +1,3 @@
+[submodule "config/milito-config"]
+	path = config/milito-config
+	url = git@github.com:basklab/milito-config.git
