@@ -1,4 +1,4 @@
-package decks
+package config
 
 import (
 	"milito-golang/entity"

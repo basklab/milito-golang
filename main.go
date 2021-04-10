@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"milito-golang/config/decks"
+	"milito-golang/config"
 	"milito-golang/game"
 	"milito-golang/store"
 	"net/http"
@@ -25,5 +25,5 @@ func setupGame(c *gin.Context) {
 }
 
 func processPing(c *gin.Context) {
-	c.JSON(http.StatusOK, decks.NewAlexandrianMacedonian())
+	c.JSON(http.StatusOK, config.NewAlexandrianMacedonian())
 }

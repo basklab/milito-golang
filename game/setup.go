@@ -1,7 +1,7 @@
 package game
 
 import (
-	"milito-golang/config/decks"
+	"milito-golang/config"
 	"milito-golang/entity"
 	"milito-golang/shared"
 )
@@ -18,7 +18,7 @@ func TakeCard(player entity.PlayerState) entity.PlayerState {
 func InitialSetup() entity.GameState {
 
 	currentPlayer := entity.PlayerState{
-		Deck:        decks.NewAlexandrianMacedonian(),
+		Deck:        config.NewAlexandrianMacedonian(),
 		DeadPile:    entity.Deck{},
 		DiscardPile: entity.Deck{},
 		Faction:     shared.AlexandrianMacedonian,
@@ -30,7 +30,7 @@ func InitialSetup() entity.GameState {
 	}
 
 	anotherPlayer := entity.PlayerState{
-		Deck:        decks.NewAncientBritish(),
+		Deck:        config.NewAncientBritish(),
 		DeadPile:    entity.Deck{Cards: []entity.Card{}},
 		DiscardPile: entity.Deck{Cards: []entity.Card{}},
 		Faction:     shared.AncientBritish,

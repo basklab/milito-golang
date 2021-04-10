@@ -1,9 +1,30 @@
-package decks
+package config
 
 import (
+	_ "embed"
+	"fmt"
+	"gopkg.in/yaml.v3"
 	"math/rand"
 	"milito-golang/entity"
 )
+
+type YamlConfig struct {
+	Leaders []entity.LeaderCard `yaml:"leaders"`
+	Units []entity.UnitCard `yaml:"units"`
+	Counts map[string]int `yaml:"counts"`
+}
+
+//go:embed milito-config/decks/AncientBritish.yaml
+var s []byte
+
+func Ololo() {
+	var yamlConfig YamlConfig
+	_ = yaml.Unmarshal(s, &yamlConfig)
+	fmt.Println(yamlConfig.Leaders)
+	fmt.Println(yamlConfig.Units)
+	fmt.Println(yamlConfig.Counts)
+}
+
 
 func multiply(nCards int, card entity.UnitCard) []entity.UnitCard {
 	result := make([]entity.UnitCard, nCards)

@@ -2,14 +2,22 @@ package main
 
 import (
 	"fmt"
+	"milito-golang/config"
 	"milito-golang/game"
 	"milito-golang/shared"
 )
 
+
 func main() {
+	config.Ololo()
+
+	return
+
 	state := game.InitialSetup()
 
+	fmt.Println("STATE:")
 	fmt.Println(state)
+	fmt.Println("-------")
 
 	state = game.PlaceAUnit(state, shared.PlaceUnitEvent{
 		DiscardedCards: []int{7, 21},
