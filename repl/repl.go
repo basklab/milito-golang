@@ -1,16 +1,18 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"milito-golang/config"
 	"milito-golang/game"
 	"milito-golang/shared"
+	"os"
 )
 
-
 func main() {
-	config.Ololo()
-
+	tmp := config.LoadDeckConfig(shared.AncientBritish)
+	b, _ := json.Marshal(tmp)
+	_, _ = os.Stdout.Write(b)
 	return
 
 	state := game.InitialSetup()

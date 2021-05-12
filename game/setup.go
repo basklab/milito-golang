@@ -18,7 +18,7 @@ func TakeCard(player entity.PlayerState) entity.PlayerState {
 func InitialSetup() entity.GameState {
 
 	currentPlayer := entity.PlayerState{
-		Deck:        config.NewAlexandrianMacedonian(),
+		Deck:        config.LoadDeckConfig(shared.AlexandrianMacedonian),
 		DeadPile:    entity.Deck{},
 		DiscardPile: entity.Deck{},
 		Faction:     shared.AlexandrianMacedonian,
@@ -30,7 +30,7 @@ func InitialSetup() entity.GameState {
 	}
 
 	anotherPlayer := entity.PlayerState{
-		Deck:        config.NewAncientBritish(),
+		Deck:        config.LoadDeckConfig(shared.AncientBritish),
 		DeadPile:    entity.Deck{Cards: []entity.Card{}},
 		DiscardPile: entity.Deck{Cards: []entity.Card{}},
 		Faction:     shared.AncientBritish,
