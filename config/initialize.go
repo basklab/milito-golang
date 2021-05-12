@@ -2,6 +2,7 @@ package config
 
 import (
 	_ "embed"
+	"fmt"
 	"gopkg.in/yaml.v3"
 	"math/rand"
 	"milito-golang/entity"
@@ -37,7 +38,8 @@ func LoadDeckConfig(deck shared.FactionsEnum) entity.Deck {
 	}
 	// set card uuids
 	for i, _ := range cards {
-		cards[i].SetId(i)
+		// start from 1, i.e. 0 is a default value in GO
+		cards[i].SetId(i+1)
 	}
 	// shuffle deck in deterministic order
 	rand.Seed(42)
@@ -49,6 +51,7 @@ func LoadDeckConfig(deck shared.FactionsEnum) entity.Deck {
 
 func multiply(nCards int, card entity.UnitCard) []entity.Card {
 	result := make([]entity.Card, nCards)
+	fmt.Println(card, nCards)
 	for i := range result {
 		tmp := card
 		result[i] = &tmp

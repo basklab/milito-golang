@@ -4,19 +4,24 @@ import "milito-golang/shared"
 
 type GameState struct {
 	Neutral       [5]int
-	Phase         PhasesEnum
-	CurrentPlayer PlayerState
+	Phase         shared.PhasesEnum
+	ActivePlayer  PlayerState
 	AnotherPlayer PlayerState
 	BattleState   AttackState
+	Step          StepsEnum
+	DeployPenalty int
 }
 
 type AttackState struct {
+	AttackColumn int
+	DefenceColumn int
+	SquadFormation SquadFormation
 }
 
 type SquadFormation struct {
+	BonusCard   Card
 	MainUnit    UnitCard
 	SupportUnit UnitCard
-	BonusCard   Card
 }
 
 type Deck struct {
@@ -36,5 +41,5 @@ type PlayerState struct {
 	PlayerId    int
 	Row1        [5]UnitCard
 	Row2        [5]UnitCard
-	State       PhasesEnum
+	State       shared.PhasesEnum
 }

@@ -28,6 +28,7 @@ func (c *UnitCard) Id() int {
 
 type LeaderCard struct {
 	id int
+	UnitType         string `yaml:"unit_type"`
 	CombatValue      int `yaml:"combat_value"`
 	PlaceUnitAbility int `yaml:"place_unit_ability"`
 	SpecialEffect    string `yaml:"special_effect"`

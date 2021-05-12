@@ -22,7 +22,7 @@ func (gs GameState) ToDto() shared.GameTableDTO {
 	return shared.GameTableDTO{
 		Neutral:       gs.Neutral,
 		Phase:         "",
-		CurrentPlayer: gs.CurrentPlayer.ToDto(),
+		CurrentPlayer: gs.ActivePlayer.ToDto(),
 		AnotherPlayer: gs.AnotherPlayer.ToDto(),
 	}
 }

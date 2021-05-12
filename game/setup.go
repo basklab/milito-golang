@@ -8,7 +8,6 @@ import (
 
 const NCardsAtGameStart = 9
 
-
 func TakeCard(player entity.PlayerState) entity.PlayerState {
 	card := player.Deck.Pop()
 	player.Hand.Push(card)
@@ -48,8 +47,9 @@ func InitialSetup() entity.GameState {
 
 	return entity.GameState{
 		Neutral:       [5]int{0, 0, 0, 0, 0},
-		Phase:         entity.PhasesEnum("OLOLO"),
-		CurrentPlayer: currentPlayer,
+		Phase:         shared.PHASE_4_PLAYER_ACTIONS,
+		Step:          entity.PLAY_CARD,
+		ActivePlayer:  currentPlayer,
 		AnotherPlayer: anotherPlayer,
 		BattleState:   entity.AttackState{},
 	}
